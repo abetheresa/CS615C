@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>TicTacToe</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+  <style>
+    body {
+    /* display: flex; */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+    form {
+    border: 2px solid black;  /* Add a solid black border */
+    padding: 20px;  /* Add some padding inside the form */
+    border-radius: 10px;  /* Optional: rounded corners */
+    width: 400px;  /* Adjust width */
+    background-color: white;  /* Ensure background color */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Optional: shadow for better appearance */
+}
+:root {
+  --planeColor: hsl(202, 44%, 15%);
+  --size: 150px;
+}
+
+.planeWrapper {
+  transform-origin: top;
+  animation: loadingAnimation 2s ease-in-out infinite;
+}
+
+@keyframes loadingAnimation {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+.planeWrapper {
+  width: var(--size);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.planeBody,
+.planeBody * {
+  background: var(--planeColor);
+}
+.planeBody {
+  position: relative;
+
+  width: 75%;
+  aspect-ratio: 7/1;
+
+  border-bottom-left-radius: 50% 100%;
+  border-top-right-radius: 25% 90%;
+  border-bottom-right-radius: 20% 20%;
+}
+.planeTail,
+.wingLeft,
+.wingRight {
+  position: absolute;
+}
+.planeTail {
+  left: calc(-0.3% + 1px);
+  top: -120%;
+
+  width: 15%;
+  aspect-ratio: 1/1.25;
+
+  transform: skewX(5deg) translateX(-5%);
+  border-top-left-radius: 10%;
+  border-top-right-radius: 100% 100%;
+}
+.wingLeft,
+.wingRight {
+  left: 50%;
+  width: 25%;
+  aspect-ratio: 1;
+}
+.wingLeft {
+  transform-origin: bottom;
+  top: -190%;
+  transform: skewX(45deg) translateX(-30%);
+  scale: 0.8;
+
+  border-top-left-radius: 10%;
+  border-top-right-radius: 60% 100%;
+}
+.wingRight {
+  transform-origin: top;
+  bottom: -170%;
+  transform: skewX(-45deg);
+
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 60% 100%;
+}
+.planeTail::after {
+  content: "";
+  position: absolute;
+  height: 55%;
+  aspect-ratio: 1;
+  transform: skewX(0deg) rotate(-8deg);
+  right: -60%;
+  bottom: 4.5%;
+
+  background: radial-gradient(
+    circle at 100% 0%,
+    transparent 70%,
+    var(--planeColor) calc(70% + 0.5px)
+  );
+}
+
+  </style>
+</html>
