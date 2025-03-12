@@ -87,7 +87,6 @@ const TicTacToe = () => {
 
     return (
     <div className='container'>
-        <h2 style={{color:"white"}}>Abe Theresa Shaji Perincheril (24250837)</h2>
         <h1 className="title" >Tic-Tac-Toe Game</h1>
         <div className="board">
             <div className='row1'>
